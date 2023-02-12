@@ -54,13 +54,20 @@ Route::controller(UserAuthController::class)->group(function () {
  */
 Route::group(['middleware' => ['web', 'checkAdmin']], function () {
     Route::group(['prefix' => '/admin', 'as' => 'admin.'], function () {
-    Route::controller(UserDashboardController::class)->group(function () {
-        // Route::get('/dashboard', 'dashboard')->name('dashboard');
-        // Route::get('/admin/dashboard', 'admindashboard')->name('admindashboard');
-        // ->middleware('userauth')
-        Route::get('/', 'admindashboard')->name('package');
+        Route::controller(UserDashboardController::class)->group(function () {
+            // Route::get('/admin/dashboard', 'admindashboard')->name('admindashboard');
+            // ->middleware('userauth')
+            Route::get('/', 'admindashboard')->name('dashboard');
+        });
+        /**
+         * Subject routes
+         */
+        Route::controller(SubjectController::class)->group(function () {
+            Route::get('/subject', 'index')->name('subject');
+            Route::post('/add-subject', 'addSuject')->name('addSuject');
+
+        });
     });
-});
 });
 
 /**
@@ -80,11 +87,4 @@ Route::group(['middleware' => ['web', 'checkStudent']], function () {
  */
 Route::controller(PackageController::class)->group(function () {
     Route::get('/package', 'index')->name('package');
-});
-
-/**
- * Subject routes
- */
-Route::controller(SubjectController::class)->group(function () {
-    Route::get('/subject', 'index')->name('subject');
 });

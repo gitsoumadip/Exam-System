@@ -20,7 +20,8 @@
             <!-- Modal -->
             <div class="modal" id="moduleFormModal">
                 <div class="modal-dialog">
-                    <form action="" method="post">
+                    <form id="addSubject">
+                        @csrf
                         <div class="modal-content bg-secondary">
                             {{-- Model header --}}
                             <div class="modal-header">
@@ -43,7 +44,8 @@
                             {{-- Modal footer  --}}
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Submit</button>
+                                {{-- <button type="button" value="submit" class="btn btn-primary">Submit</button> --}}
+                                <input type="submit" name="submit" value="submit">
                             </div>
                         </div>
                     </form>
@@ -55,3 +57,25 @@
     </div>
 
 @endsection
+@push('bodyscript')
+    <script>
+        $(document).ready(function() {
+            $("#addSubject").submit(function(e) {
+                e.preventDefault();
+                var formdata = $(this).serialize();
+                alert(formdata);
+                $.ajax({
+                    url:"{{ route('admin.addSuject') }}",
+                    type:"POST",
+                    data:formdata,
+                    success:function(data){
+                     console.log(data);   
+                    }
+                });
+            });
+        });
+    </script>
+@endpush
+{{-- @push('bodyscript')
+    <script src="{{asset('public\pages\backend\js\subject.js')}}"></script>
+@endpush --}}

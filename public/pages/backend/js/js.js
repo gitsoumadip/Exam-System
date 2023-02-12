@@ -1,0 +1,1 @@
+D:\My practices\laravel\PRI\public\pages\backend\js\js.js

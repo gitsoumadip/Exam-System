@@ -17,7 +17,7 @@
                 </div>
             </div>
             <div class="navbar-nav w-100">
-                <a href="{{url('/dashboard')}}" class="nav-item nav-link @yield('dashboard-active')
+                <a href="{{url('/admin')}}" class="nav-item nav-link @yield('dashboard-active')
                 "><i
                         class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                 {{-- <div class="nav-item dropdown">
@@ -31,7 +31,7 @@
                 </div> --}}
                 <a href="{{url('/package')}}" class="nav-item nav-link @yield('package-active')
                 "><i class="fa fa-th me-2"></i>Package</a>
-               <a href="{{url('/subject')}}" class="nav-item nav-link @yield('subject-active')
+               <a href="{{url('/admin/subject')}}" class="nav-item nav-link @yield('subject-active')
                "><i class="fa fa-keyboard me-2"></i>Subject</a>
                 {{--  <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
                 <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>
