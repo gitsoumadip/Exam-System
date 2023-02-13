@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\ExamController;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\user\UserAuthController;
@@ -67,6 +68,15 @@ Route::group(['middleware' => ['web', 'checkAdmin']], function () {
             Route::post('/add-subject', 'addSuject')->name('addSuject');
 
         });
+
+        /**
+         * Exam routes
+         */
+        Route::controller(ExamController::class)->group(function () {
+            Route::get('/exam', 'index')->name('exam');
+            Route::post('/add-exam', 'addExam')->name('addExam');
+        });
+        
     });
 });
 

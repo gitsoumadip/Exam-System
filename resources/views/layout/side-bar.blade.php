@@ -29,10 +29,9 @@
                         <a href="element.html" class="dropdown-item">Other Elements</a>
                     </div>
                 </div> --}}
-                <a href="{{url('/package')}}" class="nav-item nav-link @yield('package-active')
-                "><i class="fa fa-th me-2"></i>Package</a>
-               <a href="{{url('/admin/subject')}}" class="nav-item nav-link @yield('subject-active')
-               "><i class="fa fa-keyboard me-2"></i>Subject</a>
+                <a href="{{url('/package')}}" class="nav-item nav-link @yield('package-active')"><i class="fa fa-th me-2"></i>Package</a>
+               <a href="{{url('/admin/subject')}}" class="nav-item nav-link @yield('subject-active')"><i class="fa fa-keyboard me-2"></i>Subject</a>
+               <a href="{{url('/admin/exam')}}" class="nav-item nav-link @yield('exam-active')"><i class="fa fa-keyboard me-2"></i>Exam</a>
                 {{--  <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
                 <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>
                 <div class="nav-item dropdown">

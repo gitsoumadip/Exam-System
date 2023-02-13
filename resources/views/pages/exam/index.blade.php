@@ -1,6 +1,6 @@
 @extends('master.master');
-@section('subject-active', 'active')
-@section('title', __('Subject'))
+@section('exam-active', 'active')
+@section('title', __('Exam'))
 @section('contant')
     <!-- Sale & Revenue Start -->
    
@@ -9,8 +9,8 @@
         <div class="col-12 text-center">
             <!-- Button trigger modal -->
             <!-- Button to Open the Modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addSubjects">
-                Add Subject
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addExams">
+                Add Exam
             </button>
             <div class="bg-secondary rounded p-4 mt-3">
                 <div class="table-responsive">
@@ -25,7 +25,7 @@
                         </thead>
                         <tbody>
                             {{-- {{$subject}} --}}
-                            @if (count($subject) > 0)
+                            {{-- @if (count($subject) > 0)
                                 @foreach ($subject as $key => $items)
                                     <tr>
                                         <td scope="row">{{ $key + 1 }}</td>
@@ -33,8 +33,7 @@
                                             <button class="btn btn-info editButton" data-id="{{ $items->id }}"
                                                  data-bs-toggle="modal"
                                                 data-bs-target="#editModal">Edit</button>
-                                            {{-- </td>
-                                        <td> --}}
+                                          
                                             <button class="btn btn-danger deleteButton" data-id="{{ $items->id }}"
                                                 data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
                                         </td>
@@ -43,22 +42,22 @@
                                 @endforeach
                             @else
                                 <tr>
-                                    <td colspan="4">Subject are not Found!</td>
+                                    <td colspan="4">exam are not Found!</td>
                                 </tr>
-                            @endif
+                            @endif --}}
                         </tbody>
                     </table>
                 </div>
 
                 <!-- Add Brand Modal -->
-                <div class="modal" id="addSubjects">
+                <div class="modal" id="addExams">
                     <div class="modal-dialog">
-                        <form id="addSubject">
+                        <form id="addExam">
                             @csrf
                             <div class="modal-content  bg-secondary">
                                 <!-- Modal Header -->
                                 <div class="modal-header">
-                                    <h4 class="modal-title">Add Subject</h4>
+                                    <h4 class="modal-title">Add Exam</h4>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                 </div>
 
@@ -67,19 +66,41 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group mb-3">
-                                                <label for="" class="form-label">Subject Name</label>
+                                                <label for="" class="form-label">Exam Name</label>
                                                 <input type="text" class="form-control" name="name"
-                                                    placeholder="Enter subject Name" class="w-100" id="name">
+                                                    placeholder="Enter Exam Name" class="w-100" id="name">
+                                            </div>
+                                            <div class="form-group mb-3">
+                                                <label for="" class="form-label">Subject Name</label>
+                                                {{-- <input type="text" class="form-control" name="name"
+                                                    placeholder="Enter subject Name" class="w-100" id="name"> --}}
+                                                    <select class="form-control" name="subject_id" id="subject_id">
+                                                        <option value="">select subject</option>
+                                                        @forelse ( $subject as $items )
+                                                        <option value="{{$items->id}}">{{$items->subject}}</option>
+                                                        @empty
+                                                            <h4>not found </h4>
+                                                        @endforelse                                                   
+                                                    </select>
+                                            </div>
+                                            <div class="form-group mb-3">
+                                                <label for="" class="form-label">Date</label>
+                                                <input type="date" class="form-control" name="date"
+                                                     class="w-100" id="date">
                                             </div>                                            
-                                            {{-- <div class="form-group mb-3">
-                                                <label for="" class="form-label">Category
-                                                    Status</label>
+                                            <div class="form-group mb-3">
+                                                <label for="" class="form-label">Time</label>
+                                                <input type="time" class="form-control" name="time"
+                                                     class="w-100" id="time">
+                                            </div>
+                                            <div class="form-group mb-3">
+                                                <label for="" class="form-label">Status</label>
                                                 <select name="status" class="w-100 form-select" id="status">
                                                     <option value="">Select</option>
                                                     <option value="1" selected>active</option>
                                                     <option value="0">inactive</option>
                                                 </select>
-                                            </div> --}}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -180,12 +201,12 @@
 @push('bodyscript')
     <script>
         $(document).ready(function() {
-            $("#addSubject").submit(function(e) {
+            $("#addExam").submit(function(e) {
                 e.preventDefault();
                 var formdata = $(this).serialize();
                 alert(formdata);
                 $.ajax({
-                    url:"{{ route('admin.addSuject') }}",
+                    url:"{{ route('admin.addExam') }}",
                     type:"POST",
                     data:formdata,
                     success:function(data){

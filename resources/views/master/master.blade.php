@@ -7,6 +7,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
+    {{-- <meta content="{{ csrf_token() }}" name="_token"> --}}
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
@@ -33,6 +34,54 @@
 
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css" /> --}}
     <script src='https://www.google.com/recaptcha/api.js'></script>
+    {{-- <script>
+        const SITE_URL = "{{ url('/') }}";
+        const MODULE_CONTROLLER = "{{ $moduleController }}";
+        const CSRF_TOKEN = "{{ csrf_token() }}";
+        $(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-Token': $('meta[name="_token"]').attr('content')
+                }
+            });
+        });
+    </script> --}}
+    <style>
+         .form-label{
+            display: block;
+            text-align: start !important
+        }
+        .swal2-popup,
+        .swal2-modal {
+            border: 2px solid;
+        }
+
+        #moduleTable {
+            border: 2px solid;
+        }
+
+        #moduleTable th,
+        #moduleTable td {
+            text-align: start;
+        }
+
+        #moduleTable_length {
+            display: flex;
+            padding-bottom: 10px;
+        }
+        #moduleTable_info{
+            float: left;
+        }
+        #moduleTable_paginate{
+            float: right;
+        }
+        #moduleTable_paginate .paginate_button {
+            border: 1px solid rgba(113, 113, 113, 0.337);
+            border-radius: 6px;
+            margin: 0 5px;
+            padding: 0px 4px
+        }
+    </style>
 </head>
 
 <body>

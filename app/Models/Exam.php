@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Subject extends Model
+class Exam extends Model
 {
-    use HasFactory;
+    use HasFactory,SoftDeletes;
     protected $guarded=[];
-    protected $table='subjects';
+    protected $table='exams';
 }
