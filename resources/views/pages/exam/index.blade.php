@@ -19,14 +19,20 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Action</th>
-                                <th scope="col">Subject</th>                               
+                                <th scope="col">Exam </th>
+                                <th scope="col">Subject</th>    
+                                <th scope="col">Date</th>
+                                <th scope="col">Time</th>
+                                <th scope="col">Status</th>
+
+
                                 {{-- <th scope="col">Model Status</th> --}}
                             </tr>
                         </thead>
                         <tbody>
                             {{-- {{$subject}} --}}
-                            {{-- @if (count($subject) > 0)
-                                @foreach ($subject as $key => $items)
+                            @if (count($exam) > 0)
+                                @foreach ($exam as $key => $items)
                                     <tr>
                                         <td scope="row">{{ $key + 1 }}</td>
                                         <td>
@@ -37,14 +43,19 @@
                                             <button class="btn btn-danger deleteButton" data-id="{{ $items->id }}"
                                                 data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
                                         </td>
-                                        <td>{{ $items->subject }}</td>                                       
+                                        <td>{{ $items->exam_name}}</td>
+                                        <td>{{ $items->subjects[0]['subject']}}</td>
+                                        <td>{{ $items->date}}</td>     
+                                        <td>{{ $items->time}}</td>  
+                                        <td>{{ $items->status}}</td>  
+                                                                             
                                     </tr>
                                 @endforeach
                             @else
                                 <tr>
                                     <td colspan="4">exam are not Found!</td>
                                 </tr>
-                            @endif --}}
+                            @endif
                         </tbody>
                     </table>
                 </div>
